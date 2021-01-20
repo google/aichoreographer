@@ -1,0 +1,367 @@
+<DOCTYPE html>
+
+    <title>Learn to Dance with AIST++: Music Conditioned 3D Dance Generation</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21408087-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-21408087-2');
+    </script> -->
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <style>
+        /* greek-ext */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+            unicode-range: U+1F00-1FFF;
+        }
+
+        /* greek */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+            unicode-range: U+0370-03FF;
+        }
+
+        /* latin-ext */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        /* latin */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        /* greek-ext */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+            unicode-range: U+1F00-1FFF;
+        }
+
+        /* greek */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+            unicode-range: U+0370-03FF;
+        }
+
+        /* latin-ext */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        /* latin */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <body>
+        <div class="container">
+            <div class="row mb-2 mt-4" id="paper-title">
+                <h1 class="col-md-12 text-center">
+                    AI Choreographer:
+                </h1>
+                <h3 class="col-md-12 text-center">
+                    Music Conditioned 3D Dance Generation
+                </h3>
+                <h3 class="col-md-12 text-center">
+                    <!-- <small title="Note: placeholder">2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</small> -->
+                </h3>
+            </div>
+
+            <div class="row" id="authors">
+                <div class="mx-auto text-center">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a href="http://www.liruilong.cn/">Ruilong Li*</a><sup>1,2</sup>
+
+                        <li class="list-inline-item">
+                            <a href="https://www.cs.unc.edu/~alexyang/">Shan Yang*</a><sup>2</sup>
+
+                        <li class="list-inline-item">
+                            <a href="https://scholar.google.com/citations?user=RqOzJR0AAAAJ&hl=en">David Ross</a><sup>2</sup>
+
+                        <li class="list-inline-item">
+                            <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a><sup>2,3</sup>
+                    </ul>
+                    <p id="institution">
+                        <sup>1</sup>University of Southern California &nbsp;&nbsp;&nbsp;&nbsp;
+                        <sup>2</sup>Google Research &nbsp;&nbsp;&nbsp;&nbsp;
+                        <sup>3</sup>UC Berkeley
+                    </p>
+                </div>
+            </div>
+            <div class="row mb-2" id="links">
+                <div class="mx-auto">
+                    <ul class="nav">
+                        <li class="nav-item text-center">
+                            <a href="http://arxiv.org/abs/TODO" class="nav-link">
+                                <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M16 0H8C6.9 0 6 .9 6 2V18C6 19.1 6.9 20 8 20H20C21.1 20 22 19.1 22 18V6L16 0M20 18H8V2H15V7H20V18M4 4V22H20V24H4C2.9 24 2 23.1 2 22V4H4M10 10V12H18V10H10M10 14V16H15V14H10Z" />
+                                </svg><br>
+                                Paper
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item text-center">
+                            <a href="https://TODO" class="nav-link">
+                                <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+                                </svg><br>
+                                Code
+                            </a>
+                        </li> -->
+                        <li class="nav-item text-center">
+                            <a href="https://google.github.io/aist_plusplus/" class="nav-link">
+                                <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z" />
+                                </svg><br>
+                                Dataset
+                            </a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a href="https://github.com/TODO" class="nav-link">
+                                <svg style="width:48px;height:48px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                                </svg><br>
+                                Dataset-API
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mb-3 pt-2">
+                <div class="col-md-8 mx-auto">
+                    <div id="dynamic-teaser">
+                        <!-- <div id="teaser-dtu" class="pt-3 pb-4">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <div class="row gif-label pb-1 no-gutters">
+                                        <div class="col-12">Input music and seed motion</div>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <img src="assets/placeholder.gif" class="img-responsive">
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <audio controls class="audio-responsive">
+                                            <source src="assets/placeholder.mp3", type="audio/mpeg">
+                                        </audio>
+                                    </div>
+                                </div>
+
+                                <div class="col-2 io-arrow">
+                                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M4,15V9H12V4.16L19.84,12L12,19.84V15H4Z" />
+                                    </svg>
+                                </div>
+                                
+                                <div class="col-6">
+                                    <div class="row gif-label pb-1 no-gutters">
+                                        <div class="col-12">Generated long-range dance motion</div>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <img src="assets/placeholder.gif" class="img-responsive">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div id="teaser-dtu" class="pt-3 pb-4">
+                            <div class="row no-gutters">
+                                <div class="col-5">
+                                    <span class="helper"></span><img src="assets/teaser-dataset.png" class="img-responsive">
+                                </div>
+                                <div class="col-2">
+                                    <span class="helper"></span><img src="assets/teaser-model.png" class="img-responsive">
+                                </div>
+                                <div class="col-5">
+                                    <span class="helper"></span><img src="assets/placeholder.gif" class="img-responsive">
+                                    <div class="gif-label bottom-middle"><strong>Generated 3D Dance</strong></div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div> <!-- dynamic-teaser -->
+                    <p class="text-justify">
+                        We present a crossmodal transformer-based 
+                        architecture (CMT) model and a new 3D dance dataset <a href="https://google.github.io/aist_plusplus/" target="_blank">AIST++</a>,
+                        which contains 3D motion reconstructed from real dancers paired with music 
+                        (left). 
+                        Our CMT model generates realistic smooth dance motion in 3D with full
+                        translation, which allow applications such as automatic motion retargeting 
+                        to a novel character (right).
+                    </p>
+
+                </div>
+            </div>
+            <!-- <div class="row mb-4">
+                <div class="col-md-8 mx-auto grey-container">
+                    <h4 class="pb-2"><strong>Abstract</strong></h4>
+                    In this paper, we present a novel cross-modal transformer-based learning framework 
+                    and a new 3D dance motion dataset for the problem of 3D dance generation 
+                    conditioned on music. We carefully design our network architecture and propose 
+                    two key critical components necessary for generating qualitatively pleasing 3D 
+                    dance motion — a deep cross-modal transformer, which effectively learns the 
+                    correlation between the music and dance motion; andthe full-attention mechanism 
+                    with N future motion supervision, which is essential for producing long-range 
+                    nonfreezing motion. To train this model, we introduce a new 3D dance dataset 
+                    called AIST++, which we reconstruct from the AIST multi-view dance videos. Our 
+                    dataset contains 1.1M frames of real 3D dance motion accompanied with multi-view 
+                    camera parameters and music in 1408 sequences, covering 10 genres of dance choreography. 
+                    To our knowledge it is the largest dataset of this kind. We conduct extensive 
+                    experiments, where the proposed approach obtains much more realistic 3D dance 
+                    than the state-of-theart methods in terms of qualitative, quantitative, and user study metrics
+                </div>
+            </div> -->
+            <div class="row mb-4">
+                <div class="col-md-8 mx-auto">
+                    <h4><strong>Dance Generation Results</strong></h4>
+                    <p class="text-justify">
+                        Here we show sampled dance motions generated using our proposed model. Given a 2 second seed 
+                        motion sequence and a piece of music, our model can generate long-range non-freezing dance motion
+                        following the music rhythm. We demonstrate our generated dance motions using
+                        the avatars from <a href="https://www.mixamo.com/#/" target="_blank">Mixamo</a>.
+                    </p>
+                    <div class="row pt-1 pb-1">
+                        <div class="col-md-6">
+                            <video loop="" playsinline="" controls="" width="85%">
+                                <source src="assets/TODO.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="col-md-6">
+                            <video loop="" playsinline="" controls="" width="85%">
+                                <source src="assets/TODO.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row pt-1 pb-1">
+                        <div class="col-md-6">
+                            <video loop="" playsinline="" controls="" width="85%">
+                                <source src="assets/TODO.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="col-md-6">
+                            <video loop="" playsinline="" controls="" width="85%">
+                                <source src="assets/TODO.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            <div class="row mb-4" id="overview-video">
+                <div class="col-md-8 mx-auto grey-container">
+                    <h4 class="pb-2"><strong>Paper Overview</strong></h4>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 mx-auto">
+                    <p class="text-justify">
+                    In this paper, we present a novel cross-modal transformer-based learning framework 
+                    and a new 3D dance motion dataset for the problem of 3D dance generation 
+                    conditioned on music. We carefully design our network architecture and propose 
+                    two key critical components necessary for generating qualitatively pleasing 3D 
+                    dance motion — a deep cross-modal transformer, which effectively learns the 
+                    correlation between the music and dance motion; andthe full-attention mechanism 
+                    with N future motion supervision, which is essential for producing long-range 
+                    nonfreezing motion. To train this model, we introduce a new 3D dance dataset 
+                    called AIST++, which we reconstruct from the AIST multi-view dance videos. Our 
+                    dataset contains 1.1M frames of real 3D dance motion accompanied with multi-view 
+                    camera parameters and music in 1408 sequences, covering 10 genres of dance choreography. 
+                    To our knowledge it is the largest dataset of this kind. We conduct extensive 
+                    experiments, where the proposed approach obtains much more realistic 3D dance 
+                    than the state-of-theart methods in terms of qualitative, quantitative, and user study metrics
+                    </p>
+                </div>
+            </div>
+            <div class="row mb-4" id="overview-dataset">
+                <div class="col-md-8 mx-auto grey-container">
+                    <h4 class="pb-2"><strong>AIST++ 3D Dance Motion Dataset</strong></h4>
+                    <div class="row pt-1 pb-1">
+                        <video loop="" playsinline="" controls="" width="85%">
+                            <source src="assets/TODO.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <br>
+                    <p class="text-justify">
+                        AIST++ is a large-scale 3D human dance motion dataset we proposed, which contains a wide 
+                        variety of 3D motion paired with music. It is build upon the 
+                        <a href="https://aistdancedb.ongaaccel.jp/" target="_blank">AIST Dance Database</a>,
+                        which is a non-calibrated multi-view collection of dance videos.
+                        AIST++ dataset is designed to serve as a benchmark for both 
+                        motion generation and prediction tasks. It can also potentially benefit 
+                        other tasks such as the 2D/3D human pose estimation. To our knowledge, 
+                        AIST++ is the largest 3D human dance dataset with 1408 sequences, 30 subjects 
+                        and 10 dance genres with basic and advanced choreographies. It also covers over 18k seconds motion
+                        data with over 10M corresponding images.
+                        For more info about this dataset, please visit 
+                        <a href="https://google.github.io/aist_plusplus/" target="_blank">the dataset website</a>.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row mb-2">
+                <div class="col-md-8 mx-auto">
+                    <h4 class="mb-3">Bibtex</h4>
+                    <div class="bibtex">@misc{Li2021AIST,
+    title={Learn to Dance with AIST++: Music Conditioned 3D Dance Generation},
+    author={Ruilong Li and Shan Yang and David Ross and Angjoo Kanazawa},
+    year={2021},
+}</div>
+                </div>
+            </div>
+            
+        </div> <!-- container -->
+    </body>
