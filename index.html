@@ -1,26 +1,22 @@
 <DOCTYPE html>
-
     <title>Learn to Dance with AIST++: Music Conditioned 3D Dance Generation</title>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21408087-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-21408087-2');
-    </script> -->
 
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JM2CPK6QLP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-JM2CPK6QLP');
+    </script>
+</head>
     <style>
         /* greek-ext */
         @font-face {
@@ -232,10 +228,10 @@
                     </div> <!-- dynamic-teaser -->
                     <p class="text-justify">
                         We present a crossmodal transformer-based 
-                        architecture (CMT) model and a new 3D dance dataset <a href="https://google.github.io/aist_plusplus/" target="_blank">AIST++</a>,
+                        architecture model and a new 3D dance dataset <a href="https://google.github.io/aist_plusplus/" target="_blank">AIST++</a>,
                         which contains 3D motion reconstructed from real dancers paired with music 
                         (left). 
-                        Our CMT model generates realistic smooth dance motion in 3D with full
+                        Our model generates realistic smooth dance motion in 3D with full
                         translation, which allow applications such as automatic motion retargeting 
                         to a novel character (right).
                     </p>
@@ -250,7 +246,7 @@
                     conditioned on music. We carefully design our network architecture and propose 
                     two key critical components necessary for generating qualitatively pleasing 3D 
                     dance motion — a deep cross-modal transformer, which effectively learns the 
-                    correlation between the music and dance motion; andthe full-attention mechanism 
+                    correlation between the music and dance motion; and the full-attention mechanism 
                     with N future motion supervision, which is essential for producing long-range 
                     nonfreezing motion. To train this model, we introduce a new 3D dance dataset 
                     called AIST++, which we reconstruct from the AIST multi-view dance videos. Our 
@@ -272,44 +268,44 @@
                     </p>
                     <div class="row pt-1 pb-1">
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_1.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_2.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_3.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_4.mp4" type="video/mp4">
                             </video>
                         </div>
                     </div>
                     <div class="row pt-1 pb-1">
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_5.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_6.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_7.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="col-md-6">
-                            <video loop="" playsinline="" controls="" width="85%">
+                            <video class="results" loop="" playsinline="" controls="" width="85%" onloadstart="this.volume=0.03">
                                 <source src="assets/gen_results_8.mp4" type="video/mp4">
                             </video>
                         </div>
@@ -322,7 +318,7 @@
                 <div class="col-md-8 mx-auto grey-container">
                     <h4 class="pb-2"><strong>Paper Overview</strong></h4>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TODO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VrVsAcgFK_4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -334,7 +330,7 @@
                     conditioned on music. We carefully design our network architecture and propose 
                     two key critical components necessary for generating qualitatively pleasing 3D 
                     dance motion — a deep cross-modal transformer, which effectively learns the 
-                    correlation between the music and dance motion; andthe full-attention mechanism 
+                    correlation between the music and dance motion; and the full-attention mechanism 
                     with N future motion supervision, which is essential for producing long-range 
                     nonfreezing motion. To train this model, we introduce a new 3D dance dataset 
                     called AIST++, which we reconstruct from the AIST multi-view dance videos. Our 
@@ -356,10 +352,11 @@
                     </div>
                     <br>
                     <p class="text-justify">
-                        AIST++ is a large-scale 3D human dance motion dataset we proposed, which contains a wide 
-                        variety of 3D motion paired with music. It is build upon the 
+                        In order to train our model, we introduce AIST++, a large-scale 3D human dance motion dataset, 
+                        which contains a wide variety of 3D motion paired with music
+                        It is build upon the 
                         <a href="https://aistdancedb.ongaaccel.jp/" target="_blank">AIST Dance Database</a>,
-                        which is a non-calibrated multi-view collection of dance videos.
+                        which is a uncalibrated multi-view collection of dance videos.
                         AIST++ dataset is designed to serve as a benchmark for both 
                         motion generation and prediction tasks. It can also potentially benefit 
                         other tasks such as the 2D/3D human pose estimation. To our knowledge, 
@@ -375,9 +372,11 @@
             <div class="row mb-2">
                 <div class="col-md-8 mx-auto">
                     <h4 class="mb-3">Bibtex</h4>
-                    <div class="bibtex">@misc{Li2021AIST,
+                    <div class="bibtex">@article{Li2021AIST,
     title={Learn to Dance with AIST++: Music Conditioned 3D Dance Generation},
     author={Ruilong Li and Shan Yang and David Ross and Angjoo Kanazawa},
+    booktitle={arXiv},
+    month={January},
     year={2021},
 }</div>
                 </div>
@@ -385,3 +384,13 @@
             
         </div> <!-- container -->
     </body>
+
+    <!-- <script>
+        videoElements = document.getElementsByClassName("results");
+        for (element in videoElements) {
+            element.onloadstart = function(self){
+                self.volumn = 0.2;
+            }
+        }
+    </script> -->
+</DOCTYPE>
