@@ -8,9 +8,6 @@ h2, h3, h4, h5, h6, .form-control, small {
 p, .form-control, li {
 	font-size: 0.91em
 }
-#bibtex {
-	height: 12.9em
-}
 #paper-title h3 small {
 	color: #777;
 	font-size: 0.7em
@@ -22,9 +19,6 @@ p, .form-control, li {
 .row img.img-responsive {
 	width: 100%;
     vertical-align: middle;
-}
-.row audio.audio-responsive {
-	width: 100%;
 }
 .row video {
 	width: 100%;
@@ -119,13 +113,14 @@ body > .container > .row > div.grey-container  {
 .bottom-middle {
 	text-align: center;
 	position: absolute;
-	bottom: 4px;
+	bottom: 0px;
 	right: 16px;
 	left: 50%;
+	font-size: 4px;
 	transform: translate(-50%, -50%);
 }
 .bibtex {
-	white-space: pre;
+	white-space: pre-wrap;
 	font-family: monospace;
 	line-height: 150%;
 	background: #f3f3f3;

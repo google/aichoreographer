@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Project Page for AI Choreographer">
-     <meta name="author" content="Ruilong">
+    <meta name="author" content="Ruilong">
 
     <meta property="og:url" content="https://google.github.io/aichoreographer/">
     <meta property="og:type" content="website">
@@ -18,7 +18,7 @@
     <meta property="og:description" content="Learn to Dance with AIST++: Music Conditioned 3D Dance Generation.">
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JM2CPK6QLP"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -191,7 +191,11 @@
                                 </div>
                                 <div class="col-5">
                                     <span class="helper"></span><img src="assets/teaser_ani.gif" class="img-responsive">
-                                    <div class="gif-label bottom-middle"><strong>Generated 3D Dance</strong></div>
+                                    <div class="gif-label bottom-middle">
+                                        <svg viewBox="0 0 50 10" xmlns="http://www.w3.org/2000/svg">
+                                            <text x="10" y="10" font-weight="550">Generated 3D Dance</text>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div> 
                         </div>
@@ -275,9 +279,11 @@
                 <div class="col-md-8 mx-auto grey-container">
                     <h4 class="pb-2"><strong>AIST++ 3D Dance Motion Dataset</strong></h4>
                     <div class="row pt-1 pb-1">
-                        <video loop="" playsinline="" controls="" width="85%">
-                            <source src="assets/aist_demo.mp4" type="video/mp4">
-                        </video>
+                        <div class="col-12">
+                            <video loop="" playsinline="" controls="" width="85%">
+                                <source src="assets/aist_demo.mp4" type="video/mp4">
+                            </video>
+                        </div>
                     </div>
                     <br>
                     <p class="text-justify">
@@ -329,12 +335,4 @@
         </div> <!-- container -->
     </body>
 
-    <!-- <script>
-        videoElements = document.getElementsByClassName("results");
-        for (element in videoElements) {
-            element.onloadstart = function(self){
-                self.volumn = 0.2;
-            }
-        }
-    </script> -->
 </DOCTYPE>
