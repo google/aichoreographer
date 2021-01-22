@@ -105,8 +105,8 @@ body > .container > .row > div.grey-container  {
 }
 
 .helper {
-    display: inline-block;
-    height: 100%;
+    /* display: inline-block; */
+    /* height: 100%; */
     vertical-align: middle;
 }
 
